@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
+using AspNet.Identity3.MongoDB;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,13 +39,19 @@ namespace LeanCommerce
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<ApplicationDbContext>(options =>
+            //        options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
+
+            services.AddSingleton<ApplicationDbContext>();
+
+            services.AddIdentity<ApplicationUser, AspNet.Identity3.MongoDB.IdentityRole>()
+                .AddMongoStores<ApplicationDbContext, ApplicationUser, AspNet.Identity3.MongoDB.IdentityRole>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -53,6 +59,9 @@ namespace LeanCommerce
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,16 +81,16 @@ namespace LeanCommerce
                 app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-                try
-                {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                        .CreateScope())
-                    {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
-                             .Database.Migrate();
-                    }
-                }
-                catch { }
+                //try
+                //{
+                //    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                //        .CreateScope())
+                //    {
+                //        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                //             .Database.Migrate();
+                //    }
+                //}
+                //catch { }
             }
 
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());

@@ -4,17 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using MongoDB.Driver;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Memory;
+using System.Configuration;
+using Microsoft.Extensions.OptionsModel;
 
 namespace LeanCommerce.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : AspNet.Identity3.MongoDB.MongoIdentityContext<ApplicationUser, AspNet.Identity3.MongoDB.IdentityRole>
     {
-        protected override void OnModelCreating(ModelBuilder builder)
+        AppSettings settings;
+        public ApplicationDbContext(IOptions<AppSettings> optionsAccessor)
+        : base()
         {
-            base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            settings = optionsAccessor.Value;
+            string connectionString = settings.MongoURL;
+            string databaseName = settings.MongoDB;
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            this.Users = database.GetCollection<ApplicationUser>("users");
+            this.Roles = database.GetCollection<AspNet.Identity3.MongoDB.IdentityRole>("roles");
         }
     }
 }
