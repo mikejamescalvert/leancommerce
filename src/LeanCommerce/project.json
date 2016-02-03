@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet5-LeanCommerce-f6fdf2ca-f6ad-4602-a98f-3b9b93d7c8da",
   "version": "1.0.0-*",
   "compilationOptions": {
@@ -25,7 +25,8 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
-    "AspNet.Identity3.MongoDB": "1.0-rc1-final-*"
+    "AspNet.Identity3.MongoDB": "1.0-rc1-final-*",
+    "LeanCommerce.Services": "1.0.0-*"
   },
 
   "commands": {

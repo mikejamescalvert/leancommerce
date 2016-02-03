@@ -14,17 +14,17 @@ namespace LeanCommerce.Abstract.Controllers
 {
     public abstract class AbstractSetupRequiredController : Controller
     {
-        private AppSettings _settings;
-        public AbstractSetupRequiredController(IOptions<AppSettings> options) : base()
+        private Services.MongoSettings.Service.IMongoSettingsService _mongoService;
+        public AbstractSetupRequiredController(Services.MongoSettings.Service.IMongoSettingsService mongoService) : base()
         {
-            _settings = options.Value;
+            _mongoService = mongoService;
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if ((string)context.RouteData.Values["controller"] != "setup")
             {
-                if (_settings == null || _settings.SetupRequired() == true)
+                if (_mongoService == null || _mongoService.RequiresSetup() == true)
                     context.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                         {{"controller", "Setup"}, {"action", "Welcome"}});

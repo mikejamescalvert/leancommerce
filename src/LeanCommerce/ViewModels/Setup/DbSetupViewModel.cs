@@ -10,6 +10,7 @@ namespace LeanCommerce.ViewModels.Setup
     {
         const string DefaultDB = "leancommerce";
         const string DefaultURL = "mongodb://<<server>>";
+        
         public DbSetupViewModel() : base()
         {
             this.MongoDatabaseName = DefaultDB;
@@ -36,6 +37,17 @@ namespace LeanCommerce.ViewModels.Setup
             set
             {
                 _MongoDatabaseName = value;
+            }
+        }
+        private string _EncryptionKey;
+        [Required]
+        [Display(Name = "Data Encryption Key (PLEASE WRITE THIS DOWN!!)")]
+        public string EncryptionKey
+        {
+            get { return _EncryptionKey; }
+            set
+            {
+                _EncryptionKey = value;
             }
         }
 

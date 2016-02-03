@@ -10,7 +10,7 @@ namespace LeanCommerce.Controllers
 {
     public class HomeController : Abstract.Controllers.AbstractSetupRequiredController
     {
-        public HomeController(IOptions<AppSettings> options) : base(options)
+        public HomeController(Services.MongoSettings.Service.IMongoSettingsService mongoService) : base(mongoService)
         {
 
         }

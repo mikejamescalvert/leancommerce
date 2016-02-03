@@ -32,7 +32,7 @@ namespace LeanCommerce.Controllers
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory,
-            IOptions<AppSettings> options) : base(options)
+            Services.MongoSettings.Service.IMongoSettingsService mongoService) : base(mongoService)
         {
             _userManager = userManager;
             _signInManager = signInManager;

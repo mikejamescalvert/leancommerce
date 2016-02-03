@@ -13,10 +13,13 @@ namespace LeanCommerce.Controllers
 {
     public class SetupController : Controller
     {
-        AppSettings _settings;
-        public SetupController(IOptions<AppSettings> options) : base()
+        Services.MongoSettings.Service.IMongoSettingsService _mongoService;
+        Services.EncryptionSettings.Service.IEncryptionSettingsService _encryptionService;
+        public SetupController(Services.MongoSettings.Service.IMongoSettingsService mongoService,
+                                Services.EncryptionSettings.Service.IEncryptionSettingsService encryptionService) : base()
         {
-            _settings = options.Value;
+            _mongoService = mongoService;
+            _encryptionService = encryptionService;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -39,6 +42,14 @@ namespace LeanCommerce.Controllers
             //todo: test mongodb connection, show errors
             //todo: save app settings from model
             //todo: redirect to finish page
+            if (ModelState.IsValid == true)
+            {
+                _mongoService.MongoDBName = model.MongoDatabaseName;
+                _mongoService.MongoDBUrl = model.MongoURL;
+                _encryptionService.SetEncryptionKey(model.EncryptionKey);
+                _mongoService.SaveSettings();
+            }
+
             return View();
         }
     }

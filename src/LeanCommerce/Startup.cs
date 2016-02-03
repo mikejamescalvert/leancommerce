@@ -62,6 +62,8 @@ namespace LeanCommerce
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
+            LeanCommerce.Services.ServicesBuilder.RegisterBaseServices(ref services);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,6 +109,7 @@ namespace LeanCommerce
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
 
         // Entry point for the application.

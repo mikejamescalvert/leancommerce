@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "description": "LeanCommerce.Services Class Library",
+  "authors": [ "mcalvert" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": { }
+  },
+  "dependencies": {
+    "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+    "Newtonsoft.Json": "7.0.1"
+  }
+}
