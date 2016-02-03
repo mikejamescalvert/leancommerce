@@ -16,6 +16,7 @@ using LeanCommerce.ViewModels.Account;
 namespace LeanCommerce.Controllers
 {
     [Authorize]
+    [Attributes.SetupCheck]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
