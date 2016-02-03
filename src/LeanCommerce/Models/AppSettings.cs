@@ -9,5 +9,9 @@ namespace LeanCommerce.Models
     {
         public string MongoURL { get; set; }
         public string MongoDB { get; set; }
+        public bool SetupRequired()
+        {
+            return (MongoDB == string.Empty) || (MongoURL == string.Empty);
+        }
     }
 }

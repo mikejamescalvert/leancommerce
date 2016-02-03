@@ -12,12 +12,13 @@ using Microsoft.Extensions.Logging;
 using LeanCommerce.Models;
 using LeanCommerce.Services;
 using LeanCommerce.ViewModels.Account;
+using LeanCommerce.Abstract.Controllers;
+using Microsoft.Extensions.OptionsModel;
 
 namespace LeanCommerce.Controllers
 {
     [Authorize]
-    [Attributes.SetupCheck]
-    public class AccountController : Controller
+    public class AccountController : AbstractSetupRequiredController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -30,14 +31,15 @@ namespace LeanCommerce.Controllers
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            IOptions<AppSettings> options) : base(options)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
-        }
+        } 
 
         //
         // GET: /Account/Login

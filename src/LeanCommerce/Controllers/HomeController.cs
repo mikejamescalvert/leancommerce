@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.OptionsModel;
+using LeanCommerce.Models;
 
 namespace LeanCommerce.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Abstract.Controllers.AbstractSetupRequiredController
     {
+        public HomeController(IOptions<AppSettings> options) : base(options)
+        {
+
+        }
         public IActionResult Index()
         {
             return View();

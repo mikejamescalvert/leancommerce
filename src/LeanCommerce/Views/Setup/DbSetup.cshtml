@@ -1,0 +1,32 @@
+﻿@using LeanCommerce.ViewModels.Setup
+@model DbSetupViewModel
+
+@{
+    ViewData["Title"] = "Mongo configuration";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Setup" asp-action="DbSetup" method="post" class="form-horizontal" role="form">
+    <h4>Please enter your connection information for your Mongo DB.</h4>
+    <hr />
+    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="MongoURL" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="MongoURL" class="form-control" />
+            <span asp-validation-for="MongoURL" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="MongoDatabaseName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="MongoDatabaseName" class="form-control" />
+            <span asp-validation-for="MongoDatabaseName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Test &amp; Save</button>
+        </div>
+    </div>
+</form>
