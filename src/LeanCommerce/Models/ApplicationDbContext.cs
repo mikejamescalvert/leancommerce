@@ -45,7 +45,7 @@ namespace LeanCommerce.Models
 
         private void DbService_SettingsChanged(object sender, EventArgs e)
         {
-            if (_dbService.RequiresSetup() == false)
+            if (string.IsNullOrEmpty(_dbService.MongoDBUrl) == false && string.IsNullOrEmpty(_dbService.MongoDBName) == false)
             {
                 SetupContext();
             }

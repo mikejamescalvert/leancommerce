@@ -33,6 +33,9 @@ namespace LeanCommerce.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+
+
+
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -80,10 +83,11 @@ namespace LeanCommerce.Controllers
         {
             if (ModelState.IsValid == true)
             {
+
                 //try to create an admin user
                 try
                 {
-                    
+
                     var user = new ApplicationUser { UserName = model.EmailAddress, Email = model.EmailAddress };
                     var result = await _userManager.CreateAsync(user, model.Password);
                     
@@ -97,6 +101,8 @@ namespace LeanCommerce.Controllers
                             var assignResult = await _userManager.AddToRoleAsync(user, "Admin");
                             if (assignResult.Succeeded)
                             {
+                                _mongoService.AdminCreated = true;
+                                _mongoService.SaveSettings();
                                 await _signInManager.SignInAsync(user, isPersistent: false);
                                 return RedirectToAction("SetupComplete");
                             } else {
@@ -142,7 +148,8 @@ namespace LeanCommerce.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (_mongoService != null && _mongoService.RequiresSetup() == false)
+
+            if (_mongoService != null && _mongoService.RequiresSetup() == false && (string)context.RouteData.Values["action"] != "SetupComplete")
                 context.Result = new RedirectToRouteResult(
                 new RouteValueDictionary
                     {{"controller", "Home"}, {"action", "Index"}});

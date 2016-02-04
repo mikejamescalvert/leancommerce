@@ -9,5 +9,6 @@ namespace LeanCommerce.Services.MongoSettings.Model
     {
         public string MongoDBName { get; set; }
         public string MongoDBUrl { get; set; }
+        public bool AdminCreated { get; set; }
     }
 }
