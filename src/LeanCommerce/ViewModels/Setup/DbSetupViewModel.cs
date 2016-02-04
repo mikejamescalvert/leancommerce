@@ -41,7 +41,7 @@ namespace LeanCommerce.ViewModels.Setup
         }
         private string _EncryptionKey;
         [Required]
-        [Display(Name = "Data Encryption Key (PLEASE WRITE THIS DOWN!!)")]
+        [Display(Name = "Data Encryption Key")]
         public string EncryptionKey
         {
             get { return _EncryptionKey; }

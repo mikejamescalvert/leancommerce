@@ -11,6 +11,8 @@ namespace LeanCommerce.Services.MongoSettings.Service
         string MongoDBName { get; set; }
         string MongoDBUrl { get; set; }
         void SaveSettings();
+        Task TestConnection();
         bool RequiresSetup();
+        event EventHandler SettingsChanged;
     }
 }

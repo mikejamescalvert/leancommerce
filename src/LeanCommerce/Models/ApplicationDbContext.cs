@@ -15,21 +15,42 @@ namespace LeanCommerce.Models
 {
     public class ApplicationDbContext : AspNet.Identity3.MongoDB.MongoIdentityContext<ApplicationUser, AspNet.Identity3.MongoDB.IdentityRole>
     {
-        
+        IMongoSettingsService _dbService;
         public ApplicationDbContext(IMongoSettingsService dbService)
         : base()
         {
-            if (dbService != null && dbService.RequiresSetup() == false)
+            _dbService = dbService;
+            if (_dbService != null)
             {
-                string connectionString = dbService.MongoDBUrl;
-                string databaseName = dbService.MongoDBName;
-                var client = new MongoClient(connectionString);
-                var database = client.GetDatabase(databaseName);
-
-                this.Users = database.GetCollection<ApplicationUser>("users");
-                this.Roles = database.GetCollection<AspNet.Identity3.MongoDB.IdentityRole>("roles");
+                _dbService.SettingsChanged += DbService_SettingsChanged;
+                if (_dbService.RequiresSetup() == false)
+                {
+                    SetupContext();
+                }
             }
 
+
         }
+
+        private void SetupContext()
+        {
+            string connectionString = _dbService.MongoDBUrl;
+            string databaseName = _dbService.MongoDBName;
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            this.Users = database.GetCollection<ApplicationUser>("users");
+            this.Roles = database.GetCollection<AspNet.Identity3.MongoDB.IdentityRole>("roles");
+        }
+
+        private void DbService_SettingsChanged(object sender, EventArgs e)
+        {
+            if (_dbService.RequiresSetup() == false)
+            {
+                SetupContext();
+            }
+        }
+        
+
     }
 }

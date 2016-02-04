@@ -164,6 +164,7 @@
         "dependencies": {
           "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "MongoDb.Driver": "2.1.1",
           "Newtonsoft.Json": "7.0.1"
         }
       },
@@ -2282,6 +2283,7 @@
         "dependencies": {
           "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "MongoDb.Driver": "2.1.1",
           "Newtonsoft.Json": "7.0.1"
         }
       },
@@ -4403,6 +4405,7 @@
         "dependencies": {
           "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "MongoDb.Driver": "2.1.1",
           "Newtonsoft.Json": "7.0.1"
         }
       },

@@ -4,12 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 using Newtonsoft.Json;
+using MongoDB.Driver;
 
 namespace LeanCommerce.Services.MongoSettings.Service
 {
     public class MongoSettingsService : IMongoSettingsService
     {
         EncryptionSettings.Service.IEncryptionSettingsService _encryptionService;
+
+        public event EventHandler SettingsChanged;
+
         public MongoSettingsService(EncryptionSettings.Service.IEncryptionSettingsService encryptionService)
         {
             _encryptionService = encryptionService;
@@ -46,6 +50,17 @@ namespace LeanCommerce.Services.MongoSettings.Service
             string data = JsonConvert.SerializeObject(MongoSettings);
             data = _encryptionService.EncryptValue(data);
             System.IO.File.WriteAllText(settingsPath, data);
+
+            SettingsChanged(this, new EventArgs());
+
+        }
+        public async Task TestConnection()
+        {
+            var client = new MongoClient(MongoDBUrl);
+            var database = client.GetDatabase(MongoDBName);
+
+            await database.ListCollectionsAsync();
+
         }
         public void LoadSettings()
         {

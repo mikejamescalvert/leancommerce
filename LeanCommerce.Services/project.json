@@ -11,6 +11,7 @@
   "dependencies": {
     "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
-    "Newtonsoft.Json": "7.0.1"
+    "Newtonsoft.Json": "7.0.1",
+    "MongoDb.Driver": "2.1.1"
   }
 }
