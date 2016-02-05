@@ -40,14 +40,11 @@
                     @foreach (var item in Model)
                     {
                         <li>
-                            <a href="@Url.Action(item.Action,(item.Controller==string.Empty? "Admin" : item.Controller))"><i class="fa @item.Icon"></i> @item.Caption
-                               @if (item.Children.Count > 0)
-                               {
-                                <span class="fa fa-chevron-down"></span>
-                               }
-                            </a>
                             @if (item.Children.Count > 0)
                             {
+                                <a>
+                                    <i class="fa @item.Icon"></i> @item.Caption<span class="fa fa-chevron-down"></span>
+                                </a>
                                 <ul class="nav child_menu" style="display: none">
                                     @foreach (var childItem in item.Children)
                                     {
@@ -57,6 +54,13 @@
                                     }
                                 </ul>
                             }
+                            else
+                            {
+                                <a href="@Url.Action(item.Action,(item.Controller==string.Empty? "Admin" : item.Controller))">
+                                    <i class="fa @item.Icon"></i> @item.Caption
+                                </a>
+                            }
+
                             
                         </li>
                     }
