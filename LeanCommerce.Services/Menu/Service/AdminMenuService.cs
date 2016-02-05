@@ -18,7 +18,11 @@ namespace LeanCommerce.Services.Menu.Service
             MenuItem item;
             section = new MenuSection() { Action = "Index", Caption = "Dashboard", Controller = "Admin", DisplayOrder = 0, Icon = "fa-dashboard" };
             Sections.Add(section);
-            section = new MenuSection() { Action = "SiteSettings", Caption = "Site Settings", Controller = "Admin", DisplayOrder = 1, Icon = "fa-cogs" };
+            section = new MenuSection() { Caption = "Catalog", DisplayOrder = 1, Icon = "fa-book" };
+            item = new MenuItem() { Action = "CategorySetup", Caption = "Categories", Controller = "Admin", DisplayOrder = 0 };
+            section.Children.Add(item);
+            Sections.Add(section);
+            section = new MenuSection() { Caption = "Site Settings", DisplayOrder = 2, Icon = "fa-cogs" };
             item = new MenuItem() { Action = "SiteSettings", Caption = "General", Controller = "Admin", DisplayOrder = 0 };
             section.Children.Add(item);
             Sections.Add(section);

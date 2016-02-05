@@ -48,5 +48,12 @@ namespace LeanCommerce.Controllers
             return View();
         }
 
+        public IActionResult CategorySetup()
+        {
+            return View();
+        }
+        
+
+
     }
 }
