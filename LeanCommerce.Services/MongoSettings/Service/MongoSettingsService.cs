@@ -54,6 +54,17 @@ namespace LeanCommerce.Services.MongoSettings.Service
                 MongoSettings.AdminCreated = value;
             }
         }
+        public bool SiteSetup
+        {
+            get
+            {
+                return MongoSettings.SiteSetup;
+            }
+            set
+            {
+                MongoSettings.SiteSetup = value;
+            }
+        }
 
         public void SaveSettings()
         {
@@ -93,9 +104,10 @@ namespace LeanCommerce.Services.MongoSettings.Service
         }
         public bool RequiresSetup()
         {
-            if (string.IsNullOrEmpty(MongoSettings.MongoDBName) || 
+            if (string.IsNullOrEmpty(MongoSettings.MongoDBName) ||
                 string.IsNullOrEmpty(MongoSettings.MongoDBUrl) ||
                 MongoSettings.AdminCreated == false ||
+                MongoSettings.SiteSetup == false ||
                 _encryptionService.RequiresSetup()
                 )
                 return true;

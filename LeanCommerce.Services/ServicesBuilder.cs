@@ -12,6 +12,8 @@ namespace LeanCommerce.Services
         {
             services.AddSingleton<MongoSettings.Service.IMongoSettingsService, MongoSettings.Service.MongoSettingsService>();
             services.AddSingleton<EncryptionSettings.Service.IEncryptionSettingsService, EncryptionSettings.Service.EncryptionSettingsService>();
+            services.AddSingleton<Menu.Service.IAdminMenuService, Menu.Service.AdminMenuService>();
+            services.AddSingleton<Site.Service.ISiteSettingsService, Site.Service.SiteSettingsService>();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace LeanCommerce.Models
             if (_dbService != null)
             {
                 _dbService.SettingsChanged += DbService_SettingsChanged;
+                SetupContext();
+
                 if (_dbService.RequiresSetup() == false)
                 {
                     SetupContext();
@@ -34,21 +36,21 @@ namespace LeanCommerce.Models
 
         private void SetupContext()
         {
-            string connectionString = _dbService.MongoDBUrl;
-            string databaseName = _dbService.MongoDBName;
-            var client = new MongoClient(connectionString);
-            var database = client.GetDatabase(databaseName);
+            if (string.IsNullOrEmpty(_dbService.MongoDBUrl) == false && string.IsNullOrEmpty(_dbService.MongoDBName) == false)
+            {
+                string connectionString = _dbService.MongoDBUrl;
+                string databaseName = _dbService.MongoDBName;
+                var client = new MongoClient(connectionString);
+                var database = client.GetDatabase(databaseName);
 
-            this.Users = database.GetCollection<ApplicationUser>("users");
-            this.Roles = database.GetCollection<AspNet.Identity3.MongoDB.IdentityRole>("roles");
+                this.Users = database.GetCollection<ApplicationUser>("users");
+                this.Roles = database.GetCollection<AspNet.Identity3.MongoDB.IdentityRole>("roles");
+            }
         }
 
         private void DbService_SettingsChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_dbService.MongoDBUrl) == false && string.IsNullOrEmpty(_dbService.MongoDBName) == false)
-            {
-                SetupContext();
-            }
+            SetupContext();
         }
         
 

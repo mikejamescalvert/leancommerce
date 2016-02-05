@@ -11,6 +11,7 @@ namespace LeanCommerce.Services.MongoSettings.Service
         string MongoDBName { get; set; }
         string MongoDBUrl { get; set; }
         bool AdminCreated { get; set; }
+        bool SiteSetup { get; set; }
         void SaveSettings();
         Task TestConnection();
         bool RequiresSetup();

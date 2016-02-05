@@ -1,0 +1,25 @@
+﻿@using LeanCommerce.ViewModels.Admin
+@model SiteSettingsViewModel
+
+@{
+    ViewData["Title"] = "Site Settings";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Admin" asp-action="SiteSettings" method="post" class="form-horizontal" role="form">
+    <h4>Please enter your site information.</h4>
+    <hr />
+    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="SiteName" class="col-md-3 control-label"></label>
+        <div class="col-md-3">
+            <input asp-for="SiteName" class="form-control" />
+            <span asp-validation-for="SiteName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 text-right">
+            <button type="submit" class="btn btn-default">Save Settings</button>
+        </div>
+    </div>
+</form>

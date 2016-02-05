@@ -22,18 +22,20 @@ namespace LeanCommerce.Controllers
         UserManager<ApplicationUser> _userManager;
         SignInManager<ApplicationUser> _signInManager;
         RoleManager<IdentityRole> _roleManager;
+        Services.Site.Service.ISiteSettingsService _siteSettingsService;
         public SetupController(Services.MongoSettings.Service.IMongoSettingsService mongoService,
                                 Services.EncryptionSettings.Service.IEncryptionSettingsService encryptionService,
                                 UserManager<ApplicationUser> userManager,
                                 RoleManager<IdentityRole> roleManager,
-                                SignInManager<ApplicationUser> signInManager) : base()
+                                SignInManager<ApplicationUser> signInManager,
+                                Services.Site.Service.ISiteSettingsService siteSettingsService) : base()
         {
             _mongoService = mongoService;
             _encryptionService = encryptionService;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-
+            _siteSettingsService = siteSettingsService;
 
 
         }
@@ -104,7 +106,7 @@ namespace LeanCommerce.Controllers
                                 _mongoService.AdminCreated = true;
                                 _mongoService.SaveSettings();
                                 await _signInManager.SignInAsync(user, isPersistent: false);
-                                return RedirectToAction("SetupComplete");
+                                return RedirectToAction("SiteSetup");
                             } else {
                                 foreach (var item in assignResult.Errors)
                                 {
@@ -136,6 +138,40 @@ namespace LeanCommerce.Controllers
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", "An error occurred creating an admin user: " + ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+
+        public IActionResult SiteSetup()
+        {
+            return View(new SiteSetupViewModel());
+        }
+        [HttpPost]
+        public IActionResult SiteSetup(SiteSetupViewModel model)
+        {
+            if (ModelState.IsValid == true)
+            {
+
+                //try to setup site details
+                try
+                {
+                    Services.Site.Model.SiteSettings defaultSite = _siteSettingsService.DefaultSiteSettings;
+                    if (defaultSite == null)
+                    {
+                        defaultSite = new Services.Site.Model.SiteSettings();
+                        defaultSite.DefaultSite = true;
+                    }
+                    defaultSite.SiteName = model.SiteName;
+                    _siteSettingsService.InsertUpdateSite(defaultSite);
+                    _mongoService.SiteSetup = true;
+                    _mongoService.SaveSettings();
+                    return RedirectToAction("SetupComplete");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred creating site details: " + ex.Message);
                 }
             }
             return View(model);
