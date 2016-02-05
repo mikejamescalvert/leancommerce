@@ -68,7 +68,10 @@ namespace LeanCommerce.Services.MongoSettings.Service
 
         public void SaveSettings()
         {
-            string settingsPath = (string)AppDomain.CurrentDomain.GetData("DataDirectory") + "/mongosettings.config";
+            string baseDirectory = (string)AppDomain.CurrentDomain.GetData("DataDirectory");
+            if (string.IsNullOrEmpty(baseDirectory))
+                baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string settingsPath = baseDirectory + "/mongosettings.config";
             string data = JsonConvert.SerializeObject(MongoSettings);
             data = _encryptionService.EncryptValue(data);
             System.IO.File.WriteAllText(settingsPath, data);
@@ -87,7 +90,10 @@ namespace LeanCommerce.Services.MongoSettings.Service
         public void LoadSettings()
         {
 
-            string settingsPath = (string)AppDomain.CurrentDomain.GetData("DataDirectory") + "/mongosettings.config";
+            string baseDirectory = (string)AppDomain.CurrentDomain.GetData("DataDirectory");
+            if (string.IsNullOrEmpty(baseDirectory))
+                baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string settingsPath = baseDirectory + "/mongosettings.config";
             if (System.IO.File.Exists(settingsPath) == true && _encryptionService!= null && _encryptionService.RequiresSetup() == false)
             {
                 string data = System.IO.File.ReadAllText(settingsPath);

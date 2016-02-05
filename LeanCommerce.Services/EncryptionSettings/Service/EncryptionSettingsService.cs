@@ -162,7 +162,11 @@ namespace LeanCommerce.Services.EncryptionSettings.Service
 
         private void LoadKey()
         {
-            var settingsPath = (string)AppDomain.CurrentDomain.GetData("DataDirectory") + "/encryption.config";
+
+            string baseDirectory = (string)AppDomain.CurrentDomain.GetData("DataDirectory");
+            if (string.IsNullOrEmpty(baseDirectory))
+                baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var settingsPath = baseDirectory + "/encryption.config";
             if (System.IO.File.Exists(settingsPath) == true)
             {
                 var data = System.IO.File.ReadAllText(settingsPath);
@@ -175,7 +179,11 @@ namespace LeanCommerce.Services.EncryptionSettings.Service
         }
         private void SaveKey()
         {
-            var settingsPath = (string)AppDomain.CurrentDomain.GetData("DataDirectory") + "/encryption.config";
+
+            string baseDirectory = (string)AppDomain.CurrentDomain.GetData("DataDirectory");
+            if (string.IsNullOrEmpty(baseDirectory))
+                baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var settingsPath = baseDirectory + "/encryption.config";
             var data = JsonConvert.SerializeObject(settings);
             System.IO.File.WriteAllText(settingsPath, data);
         }
