@@ -11,5 +11,6 @@ namespace LeanCommerce.Services.Catalog.Model
         public ObjectId Id { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
+        
     }
 }

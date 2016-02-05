@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeanCommerce.Services.Catalog.Model
 {
-    public class Product
+    public class ProductCategoryRelationship
     {
         public ObjectId Id { get; set; }
-        public string Sku { get; set; }
-        public string Name { get; set; }
-        public decimal ListPrice { get; set; }
-        public bool Active { get; set; }
-        
+        public ObjectId ProductId { get; set; }
+        public ObjectId CategoryId { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }
