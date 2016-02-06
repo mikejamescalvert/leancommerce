@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Http;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace LeanCommerce.Services.MongoSettings.Service
         Task TestConnection();
         bool RequiresSetup();
         event EventHandler SettingsChanged;
+        IMongoCollection<T> GetMongoCollection<T>(string tableName);
     }
 }

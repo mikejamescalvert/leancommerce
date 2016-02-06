@@ -14,11 +14,17 @@ namespace LeanCommerce.Controllers
     [Authorize(Roles ="Admin")]
     public class AdminController : AbstractSetupRequiredController
     {
+        Services.Catalog.Service.ICategoryService _categoryService;
         Services.Site.Service.ISiteSettingsService _siteSettingsService;
+        Services.Catalog.Service.IProductService _productService;
         public AdminController(Services.MongoSettings.Service.IMongoSettingsService mongoService,
-                    Services.Site.Service.ISiteSettingsService siteSettingsService) : base(mongoService)
+                    Services.Site.Service.ISiteSettingsService siteSettingsService,
+                    Services.Catalog.Service.ICategoryService categoryService,
+                    Services.Catalog.Service.IProductService productService) : base(mongoService)
         {
             _siteSettingsService = siteSettingsService;
+            _categoryService = categoryService;
+            _productService = productService;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -50,7 +56,8 @@ namespace LeanCommerce.Controllers
 
         public IActionResult CategorySetup()
         {
-            return View();
+            IList<Services.Catalog.Model.Category> model = _categoryService.GetRootCategories(false);
+            return View(model);
         }
         
 

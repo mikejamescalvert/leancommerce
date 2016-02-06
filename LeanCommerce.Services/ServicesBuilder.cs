@@ -14,6 +14,8 @@ namespace LeanCommerce.Services
             services.AddSingleton<EncryptionSettings.Service.IEncryptionSettingsService, EncryptionSettings.Service.EncryptionSettingsService>();
             services.AddSingleton<Menu.Service.IAdminMenuService, Menu.Service.AdminMenuService>();
             services.AddSingleton<Site.Service.ISiteSettingsService, Site.Service.SiteSettingsService>();
+            services.AddSingleton<Catalog.Service.ICategoryService, Catalog.Service.CategoryService>();
+            services.AddSingleton<Catalog.Service.IProductService, Catalog.Service.ProductService>();
         }
     }
 }

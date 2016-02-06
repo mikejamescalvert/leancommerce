@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LeanCommerce.Services.Catalog.Service
 {
-    interface ICategoryService
+    public interface ICategoryService
     {
-        IMongoCollection<Category> Categories { get; set; }
+        IMongoCollection<Category> Categories { get; }
         Category GetCategoryById(ObjectId categoryId);
         IList<Category> GetRootCategories(bool active);
         IList<Category> GetRootCategories(ObjectId siteId, bool active);

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LeanCommerce.Services.Catalog.Service
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
     }
 }

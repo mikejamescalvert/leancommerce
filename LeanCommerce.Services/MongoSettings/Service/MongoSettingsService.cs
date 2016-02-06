@@ -122,5 +122,33 @@ namespace LeanCommerce.Services.MongoSettings.Service
 
             return false;
         }
+        MongoClient _mongoClient;
+        MongoClient GetMongoClient()
+        {
+            if (string.IsNullOrEmpty(MongoDBUrl) == false)
+            {
+                return new MongoClient(MongoDBUrl);
+
+            }
+            return null;
+        }
+        IMongoDatabase GetMongoDatabase()
+        {
+            MongoClient client = GetMongoClient();
+            if (client != null && string.IsNullOrEmpty(MongoDBName) == false)
+            {
+                return client.GetDatabase(MongoDBName);
+            }
+            return null;
+        }
+        public IMongoCollection<T> GetMongoCollection<T> (string tableName)
+        {
+            IMongoDatabase mongoDatabase = GetMongoDatabase();
+            if (mongoDatabase != null)
+            {
+                return mongoDatabase.GetCollection<T>(tableName);
+            }
+            return null;
+        }
     }
 }
