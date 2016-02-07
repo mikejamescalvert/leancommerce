@@ -56,8 +56,8 @@ namespace LeanCommerce.Controllers
 
         public IActionResult CategorySetup()
         {
-            IList<Services.Catalog.Model.Category> model = _categoryService.GetRootCategories(false);
-            return View(model);
+            
+            return View(_categoryService.Categories);
         }
         
 
