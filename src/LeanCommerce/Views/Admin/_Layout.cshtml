@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="~/css/maps/jquery-jvectormap-2.0.1.css" />
         <link rel="stylesheet" href="~/css/icheck/flat/green.css" />
         <link rel="stylesheet" href="~/css/floatexamples.css" />
+        <link rel="stylesheet" href="~/css/datatables/tools/css/dataTables.tableTools.css" >
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -31,19 +32,23 @@
         <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/maps/jquery-jvectormap-2.0.1.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/icheck/flat/green.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/floatexamples.css" asp-append-version="true" />adasdasdasdsad
+        <link rel="stylesheet" href="~/css/floatexamples.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/datatables/tools/css/dataTables.tableTools.css" asp-append-version="true" />
     </environment>
+    
 
     <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/angular/angular.min.js"></script>
-        <script src="~/lib/angular/angular-route.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular.min.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular-route.min.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/js/app.js" asp-append-version="true"></script>
         <script src="~/js/controllers.js" asp-append-version="true"></script>
         <script src="~/js/services.js" asp-append-version="true"></script>
         <script src="~/js/nprogress.js" asp-append-version="true"></script>
+        <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
+        <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -67,6 +72,8 @@
         <script src="~/js/controllers.min.js" asp-append-version="true"></script>
         <script src="~/js/services.min.js" asp-append-version="true"></script>
         <script src="~/js/nprogress.js" asp-append-version="true"></script>
+        <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
+        <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
     </environment>
 
 
@@ -161,8 +168,8 @@
 
 
     <!-- gauge js -->
-    <script type="text/javascript" src="~/js/gauge/gauge.min.js"></script>
-    <script type="text/javascript" src="~/js/gauge/gauge_demo.js"></script>
+    @*<script type="text/javascript" src="~/js/gauge/gauge.min.js"></script>
+    <script type="text/javascript" src="~/js/gauge/gauge_demo.js"></script>*@
     <!-- chart js -->
     <script src="~/js/chartjs/chart.min.js"></script>
     <!-- bootstrap progress js -->
@@ -315,7 +322,7 @@
                 color: "#3498DB"
             }
     ];
-        var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
+        //var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
     </script>
     <!-- /dashbord linegraph -->
     <!-- datepicker -->

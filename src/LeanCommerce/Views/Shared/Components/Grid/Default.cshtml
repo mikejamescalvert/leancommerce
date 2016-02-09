@@ -1,0 +1,215 @@
+﻿@using LeanCommerce.ViewComponents
+@model GridViewComponent.GridViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="example_wrapper" class="dataTables_wrapper" role="grid">
+    <div class="DTTT_container"><a class="DTTT_button DTTT_button_copy" id="ToolTables_example_0"><span>Copy</span><div style="position: absolute; left: 0px; top: 0px; width: 44px; height: 28px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="&lt;?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?&gt;" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="44" height="28" name="ZeroClipboard_TableToolsMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=44&amp;height=28" wmode="transparent"></div></a><a class="DTTT_button DTTT_button_csv" id="ToolTables_example_1"><span>CSV</span><div style="position: absolute; left: 0px; top: 0px; width: 42px; height: 28px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_2" src="&lt;?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?&gt;" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="42" height="28" name="ZeroClipboard_TableToolsMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=42&amp;height=28" wmode="transparent"></div></a><a class="DTTT_button DTTT_button_xls" id="ToolTables_example_2"><span>Excel</span><div style="position: absolute; left: 0px; top: 0px; width: 47px; height: 28px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_3" src="&lt;?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?&gt;" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="47" height="28" name="ZeroClipboard_TableToolsMovie_3" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=47&amp;height=28" wmode="transparent"></div></a><a class="DTTT_button DTTT_button_pdf" id="ToolTables_example_3"><span>PDF</span><div style="position: absolute; left: 0px; top: 0px; width: 41px; height: 28px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_4" src="&lt;?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?&gt;" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="41" height="28" name="ZeroClipboard_TableToolsMovie_4" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=41&amp;height=28" wmode="transparent"></div></a><a class="DTTT_button DTTT_button_print" id="ToolTables_example_4" title="View print view"><span>Print</span></a></div><div class="clear"></div><div id="example_length" class="dataTables_length"><label>Show <select size="1" style="width: 56px;padding: 6px;" name="example_length" aria-controls="example"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div class="dataTables_filter" id="example_filter"><label>Search all columns: <input type="text" aria-controls="example"></label></div><table id="example" class="table table-striped responsive-utilities jambo_table dataTable" aria-describedby="example_info">
+        <thead>
+            <tr class="headings" role="row">
+                <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="
+                    " style="width: 75px;">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Invoice : activate to sort column ascending" style="width: 171px;">Invoice </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Invoice Date : activate to sort column ascending" style="width: 384px;">Invoice Date </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Order : activate to sort column ascending" style="width: 203px;">Order </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Bill to Name : activate to sort column ascending" style="width: 201px;">Bill to Name </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status : activate to sort column ascending" style="width: 116px;">Status </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Amount : activate to sort column ascending" style="width: 140px;">Amount </th>
+                <th class="no-link last sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Action
+                                                : activate to sort column ascending" style="width: 120px;">
+                    <span class="nobr">Action</span>
+                </th>
+            </tr>
+        </thead>
+
+
+
+        <tbody role="alert" aria-live="polite" aria-relevant="all">
+            <tr class="pointer odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000040</td>
+                <td class=" ">May 23, 2014 11:47:56 PM </td>
+                <td class=" ">121000210 <i class="success fa fa-long-arrow-up">
+                    </i>
+                </td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$7.45</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000039</td>
+                <td class=" ">May 23, 2014 11:30:12 PM</td>
+                <td class=" ">121000208 <i class="success fa fa-long-arrow-up">
+                    </i>
+                </td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$741.20</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer selected odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" checked="" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000038</td>
+                <td class=" ">May 24, 2014 10:55:33 PM</td>
+                <td class=" ">121000203 <i class="success fa fa-long-arrow-up">
+                    </i>
+                </td>
+                <td class=" ">Mike Smith</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$432.26</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000037</td>
+                <td class=" ">May 24, 2014 10:52:44 PM</td>
+                <td class=" ">121000204</td>
+                <td class=" ">Mike Smith</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$333.21</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000040</td>
+                <td class=" ">May 24, 2014 11:47:56 PM </td>
+                <td class=" ">121000210</td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$7.45</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000039</td>
+                <td class=" ">May 26, 2014 11:30:12 PM</td>
+                <td class=" ">121000208 <i class="error fa fa-long-arrow-down">
+                    </i>
+                </td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$741.20</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000038</td>
+                <td class=" ">May 26, 2014 10:55:33 PM</td>
+                <td class=" ">121000203</td>
+                <td class=" ">Mike Smith</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$432.26</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000037</td>
+                <td class=" ">May 26, 2014 10:52:44 PM</td>
+                <td class=" ">121000204</td>
+                <td class=" ">Mike Smith</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$333.21</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000040</td>
+                <td class=" ">May 27, 2014 11:47:56 PM </td>
+                <td class=" ">121000210</td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$7.45</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000039</td>
+                <td class=" ">May 28, 2014 11:30:12 PM</td>
+                <td class=" ">121000208</td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$741.20</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer odd">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000040</td>
+                <td class=" ">May 23, 2014 11:47:56 PM </td>
+                <td class=" ">121000210 <i class="success fa fa-long-arrow-up">
+                    </i>
+                </td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$7.45</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+            <tr class="pointer even">
+                <td class="a-center   sorting_1">
+                    <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="tableflat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </td>
+                <td class=" ">121000039</td>
+                <td class=" ">May 23, 2014 11:30:12 PM</td>
+                <td class=" ">121000208 <i class="success fa fa-long-arrow-up">
+                    </i>
+                </td>
+                <td class=" ">John Blank L</td>
+                <td class=" ">Paid</td>
+                <td class="a-right a-right  ">$741.20</td>
+                <td class=" last "><a href="#">
+                    View</a>
+                </td>
+            </tr>
+        </tbody>
+    </table><div class="dataTables_info" id="example_info">Showing 1 to 12 of 40 entries</div><div class="dataTables_paginate paging_full_numbers" id="example_paginate"><a tabindex="0" class="first paginate_button paginate_button_disabled" id="example_first">First</a><a tabindex="0" class="previous paginate_button paginate_button_disabled" id="example_previous">Previous</a><span><a tabindex="0" class="paginate_active">1</a><a tabindex="0" class="paginate_button">2</a><a tabindex="0" class="paginate_button">3</a><a tabindex="0" class="paginate_button">4</a></span><a tabindex="0" class="next paginate_button" id="example_next">Next</a><a tabindex="0" class="last paginate_button" id="example_last">Last</a></div>
+</div>

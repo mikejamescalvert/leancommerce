@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using LeanCommerce.Abstract.Controllers;
 using Microsoft.AspNet.Authorization;
 using LeanCommerce.ViewModels.Admin;
+using LeanCommerce.Services.Catalog.Model;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -60,7 +61,15 @@ namespace LeanCommerce.Controllers
             return View(_categoryService.Categories);
         }
         
-
+        public IActionResult NewCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult NewCategory(Category model)
+        {
+            return View();
+        }
 
     }
 }
