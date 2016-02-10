@@ -92,16 +92,27 @@ namespace LeanCommerce.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult EditCategory(CategoryViewModel model)
+        public async Task<IActionResult> EditCategory(CategoryViewModel model)
         {
-            Category result = null;
-            //load category if available
-            if (string.IsNullOrEmpty(model.ObjectId) == false)
+            if (ModelState.IsValid)
             {
-                result = _categoryService.GetCategoryById(new MongoDB.Bson.ObjectId(model.ObjectId));
+                Category result = null;
+                //load category if available
+                if (string.IsNullOrEmpty(model.ObjectId) == false)
+                {
+                    result = _categoryService.GetCategoryById(new MongoDB.Bson.ObjectId(model.ObjectId));
+                }
+
+                if (result == null)
+                    result = new Category();
+
+                result.Name = model.Name;
+                result.Active = model.Active;
+
+                await _categoryService.SaveCategory(result);
+
+                return RedirectToAction("CategorySetup");
             }
-            
-            //todo: save/update category
             return View();
         }
 

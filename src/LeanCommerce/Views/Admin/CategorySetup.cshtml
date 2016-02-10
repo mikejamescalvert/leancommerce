@@ -47,20 +47,19 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                <div class="x_content">
+                <div class="x_content" ng-controller="CategorySetupGridController">
                     @(Html
                         .Grid<Category>(Model.AsQueryable())
                         .Build(columns =>
                         {
                             columns.Add(model => model.Name).Titled("Name");
                             columns.Add(model => model.Active).Titled("Active");
-                            columns.Add(model => model.Id).Titled("Id");
-
                         })
                         .Pageable(pager =>
                         {
                             pager.RowsPerPage = 10;
                         })
+                        .Css("table-hover")
                     )
 
                 </div>

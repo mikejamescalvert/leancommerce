@@ -15,5 +15,7 @@ namespace LeanCommerce.Services.Catalog.Service
         IList<Category> GetRootCategories(bool active);
         IList<Category> GetRootCategories(ObjectId siteId, bool active);
         IList<Product> GetProductsForCategory(ObjectId categoryID, bool active);
+        Task SaveCategory(Category category);
+        Task DeleteCategory(ObjectId categoryId);
     }
 }
