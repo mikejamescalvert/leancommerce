@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using LeanCommerce.Models;
 using LeanCommerce.Services;
+using NonFactors.Mvc.Grid;
 
 namespace LeanCommerce
 {
@@ -63,6 +64,8 @@ namespace LeanCommerce
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             LeanCommerce.Services.ServicesBuilder.RegisterBaseServices(ref services);
+
+            services.AddMvcGrid();
 
         }
 

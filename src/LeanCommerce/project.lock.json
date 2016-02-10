@@ -1900,6 +1900,22 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NonFactors.Grid.Core.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "compile": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        }
+      },
+      "NonFactors.Grid.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.ViewFeatures": "[6.0.0-rc1-final]",
+          "NonFactors.Grid.Core.Mvc6": "[0.9.0-rc1-final]"
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -4020,6 +4036,22 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NonFactors.Grid.Core.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "compile": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        }
+      },
+      "NonFactors.Grid.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.ViewFeatures": "[6.0.0-rc1-final]",
+          "NonFactors.Grid.Core.Mvc6": "[0.9.0-rc1-final]"
         }
       },
       "Remotion.Linq/2.0.1": {
@@ -6144,6 +6176,22 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NonFactors.Grid.Core.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "compile": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Mvc.Grid.Core.dll": {}
+        }
+      },
+      "NonFactors.Grid.Mvc6/0.9.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.ViewFeatures": "[6.0.0-rc1-final]",
+          "NonFactors.Grid.Core.Mvc6": "[0.9.0-rc1-final]"
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -7865,6 +7913,31 @@
         "tools/install.ps1"
       ]
     },
+    "NonFactors.Grid.Core.Mvc6/0.9.0-rc1-final": {
+      "type": "package",
+      "sha512": "HKiOKBsGi1Q2IiGmBssveRhnMlGSisWku2OiQjqfPK/c2C2awFAY0HT7PE9MwYkW8x6mhD9+T2wvVbOy+Nrsrg==",
+      "files": [
+        "lib/dnx451/Mvc.Grid.Core.dll",
+        "NonFactors.Grid.Core.Mvc6.0.9.0-rc1-final.nupkg",
+        "NonFactors.Grid.Core.Mvc6.0.9.0-rc1-final.nupkg.sha512",
+        "NonFactors.Grid.Core.Mvc6.nuspec"
+      ]
+    },
+    "NonFactors.Grid.Mvc6/0.9.0-rc1-final": {
+      "type": "package",
+      "sha512": "Yo7K13Q0wbgor6sHKlOJSxsr4g3IXKX0qo4IS+NvuQqzI1gD8slccy0/omVuG6n0PZLF/vSzh+UiAYjJokc1Sw==",
+      "files": [
+        "content/Content/MvcGrid/mvc-grid.css",
+        "content/Scripts/MvcGrid/mvc-grid.js",
+        "content/Scripts/MvcGrid/mvc-grid.min.js",
+        "content/Views/Shared/MvcGrid/_AjaxGrid.cshtml",
+        "content/Views/Shared/MvcGrid/_Grid.cshtml",
+        "content/Views/Shared/MvcGrid/_Pager.cshtml",
+        "NonFactors.Grid.Mvc6.0.9.0-rc1-final.nupkg",
+        "NonFactors.Grid.Mvc6.0.9.0-rc1-final.nupkg.sha512",
+        "NonFactors.Grid.Mvc6.nuspec"
+      ]
+    },
     "Remotion.Linq/2.0.1": {
       "type": "package",
       "sha512": "SIO6HDH6CU9GC2IZGBrc6q5X5vRhfatXrg9cVavCEG9W6v5e88b+vXjmLGQEorch4sYEIImRr+ODyUMyrmrqAg==",
@@ -8679,7 +8752,8 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final",
       "AspNet.Identity3.MongoDB >= 1.0.0-rc1-final-*",
-      "LeanCommerce.Services >= 1.0.0-*"
+      "LeanCommerce.Services >= 1.0.0-*",
+      "NonFactors.Grid.Mvc6 >= 0.9.0-rc1-final"
     ],
     "DNX,Version=v4.5.1": []
   }

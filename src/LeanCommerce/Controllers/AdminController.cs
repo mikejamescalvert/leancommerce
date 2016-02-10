@@ -7,6 +7,7 @@ using LeanCommerce.Abstract.Controllers;
 using Microsoft.AspNet.Authorization;
 using LeanCommerce.ViewModels.Admin;
 using LeanCommerce.Services.Catalog.Model;
+using System.Collections;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -61,13 +62,46 @@ namespace LeanCommerce.Controllers
             return View(_categoryService.Categories);
         }
         
-        public IActionResult NewCategory()
+        public IActionResult EditCategory(string objectId)
         {
-            return View();
+            Category result = null;
+            //load category if available
+            if (string.IsNullOrEmpty(objectId) == false)
+            {
+                result = _categoryService.GetCategoryById(new MongoDB.Bson.ObjectId(objectId));
+            }
+
+
+            CategoryViewModel viewModel;
+            
+            if (result != null)
+            {
+                viewModel = new CategoryViewModel()
+                {
+                    Active = result.Active,
+                    Name = result.Name,
+                    ObjectId = result.Id.ToString()
+                };
+            }
+            else
+            {
+                viewModel = new CategoryViewModel();
+            }
+            
+            
+            return View(viewModel);
         }
         [HttpPost]
-        public IActionResult NewCategory(Category model)
+        public IActionResult EditCategory(CategoryViewModel model)
         {
+            Category result = null;
+            //load category if available
+            if (string.IsNullOrEmpty(model.ObjectId) == false)
+            {
+                result = _categoryService.GetCategoryById(new MongoDB.Bson.ObjectId(model.ObjectId));
+            }
+            
+            //todo: save/update category
             return View();
         }
 

@@ -1,6 +1,8 @@
 ﻿@using LeanCommerce.Services.Catalog.Model
 @using MongoDB.Driver
 @using LeanCommerce.ViewComponents
+@using NonFactors.Mvc.Grid
+
 @model IMongoCollection<Category>
 
 @*
@@ -40,21 +42,27 @@
                     <h2>Categories</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
-                            <a href="@Url.Action("NewCategory","Admin")">New</a>
+                            <a href="@Url.Action("EditCategory","Admin")">New Category</a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @{ 
-                        GridViewComponent.GridSettings gridSettings = new GridViewComponent.GridSettings()
+                    @(Html
+                        .Grid<Category>(Model.AsQueryable())
+                        .Build(columns =>
                         {
-                            EditViewName = "EditCategory"
-                        };
-                        gridSettings.Columns.Add(new GridViewComponent.GridSettings.GridColumnInfo() { FieldName = "Name", Sortable = true });
-                        gridSettings.Columns.Add(new GridViewComponent.GridSettings.GridColumnInfo() { FieldName = "Active", Sortable = true });
-                    }
-                    @Component.Invoke("Grid", gridSettings, Model.AsQueryable<Category>())
+                            columns.Add(model => model.Name).Titled("Name");
+                            columns.Add(model => model.Active).Titled("Active");
+                            columns.Add(model => model.Id).Titled("Id");
+
+                        })
+                        .Pageable(pager =>
+                        {
+                            pager.RowsPerPage = 10;
+                        })
+                    )
+
                 </div>
             </div>
         </div>
