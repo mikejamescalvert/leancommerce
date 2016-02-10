@@ -53,7 +53,8 @@
                         .Build(columns =>
                         {
                             columns.Add(model => model.Name).Titled("Name");
-                            columns.Add(model => model.Active).Titled("Active");
+                            columns.Add(model => model.Active).Titled("Active").RenderedAs(model => model.Active == true ? "Yes" : "No"); ;
+                            columns.Add(model => model.Id).Titled("").Encoded(false).RenderedAs(model => "<a href='" + Url.Action("EditCategory","Admin",new { objectId = model.Id }) + "'>Edit</a>");
                         })
                         .Pageable(pager =>
                         {

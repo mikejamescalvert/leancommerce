@@ -833,6 +833,19 @@ h2.title:before{
 	overflow:hidden;
 }
 
+.logo a, .logo a:hover {
+    text-decoration:none;
+}
+
+.logo h2 {
+  color: #FE980F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  position: relative;
+}
 
 h2.title {
   color: #FE980F;
