@@ -1,0 +1,75 @@
+﻿@using LeanCommerce.Services.Cms.Model
+@using MongoDB.Driver
+@using LeanCommerce.ViewComponents
+@using NonFactors.Mvc.Grid
+
+@model IMongoCollection<Category>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>
+                Category Maintenance
+                <small>
+
+                </small>
+            </h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Categories</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a href="@Url.Action("EditCategory","Admin")">New Category</a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-controller="CategorySetupGridController">
+                    @(Html
+                        .Grid<Category>(Model.AsQueryable())
+                        .Build(columns =>
+                        {
+                            columns.Add(model => model.Name).Titled("Name");
+                            columns.Add(model => model.Active).Titled("Active").RenderedAs(model => model.Active == true ? "Yes" : "No"); ;
+                            columns.Add(model => model.Id).Titled("").Encoded(false).RenderedAs(model => "<a href='" + Url.Action("EditCategory", "Admin", new { objectId = model.Id }) + "'>Edit</a>");
+                        })
+                        .Pageable(pager =>
+                        {
+                            pager.RowsPerPage = 10;
+                        })
+                        .Css("table-hover")
+                    )
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>

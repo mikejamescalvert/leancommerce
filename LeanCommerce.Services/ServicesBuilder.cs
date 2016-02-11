@@ -16,6 +16,10 @@ namespace LeanCommerce.Services
             services.AddSingleton<Site.Service.ISiteSettingsService, Site.Service.SiteSettingsService>();
             services.AddSingleton<Catalog.Service.ICategoryService, Catalog.Service.CategoryService>();
             services.AddSingleton<Catalog.Service.IProductService, Catalog.Service.ProductService>();
+
+            services.AddSingleton<Cms.Service.IMungeUrlService, Cms.Service.MungeUrlService>();
+            services.AddSingleton<Cms.Service.ICmsWidgetContentService, Cms.Service.CmsWidgetContentService>();
+            services.AddSingleton<Cms.Service.ICmsPageService, Cms.Service.CmsPageService>();
         }
     }
 }
