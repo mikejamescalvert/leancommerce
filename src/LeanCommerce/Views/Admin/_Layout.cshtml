@@ -50,7 +50,7 @@
         <script src="~/js/app.js" asp-append-version="true"></script>
         <script src="~/js/controllers.js" asp-append-version="true"></script>
         <script src="~/js/services.js" asp-append-version="true"></script>
-        <script src="~/js/nprogress.js" asp-append-version="true"></script>
+        @*<script src="~/js/nprogress.js" asp-append-version="true"></script>*@
         <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
         <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
         <script src="~/js/MvcGrid/mvc-grid.js" asp-append-version="true"></script>
@@ -77,7 +77,7 @@
         <script src="~/js/app.min.js" asp-append-version="true"></script>
         <script src="~/js/controllers.min.js" asp-append-version="true"></script>
         <script src="~/js/services.min.js" asp-append-version="true"></script>
-        <script src="~/js/nprogress.js" asp-append-version="true"></script>
+        @*<script src="~/js/nprogress.js" asp-append-version="true"></script>*@
         <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
         <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
         <script src="~/js/MvcGrid/mvc-grid.js" asp-append-version="true"></script>
@@ -86,9 +86,9 @@
     </environment>
 
 
-    <script>
+    @*<script>
         NProgress.start();
-    </script>
+    </script>*@
 
     <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -414,7 +414,8 @@
     </script>
 
     tinymce.init({
-    selector: '#mytextarea'
+        selector: '#mytextarea',
+        toolbar: 'undo redo | styleselect | bold italic | link image'
     });
     <!-- /datepicker -->
     <!-- /footer content -->
