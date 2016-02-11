@@ -22,6 +22,10 @@ namespace LeanCommerce.Services.Menu.Service
             item = new MenuItem() { Action = "CategorySetup", Caption = "Categories", Controller = "Admin", DisplayOrder = 0 };
             section.Children.Add(item);
             Sections.Add(section);
+            section = new MenuSection() { Caption = "Cms", DisplayOrder = 1, Icon = "fa-cube" };
+            item = new MenuItem() { Action = "CmsPages", Caption = "Pages", Controller = "Admin", DisplayOrder = 0 };
+            section.Children.Add(item);
+            Sections.Add(section);
             section = new MenuSection() { Caption = "Site Settings", DisplayOrder = 2, Icon = "fa-cogs" };
             item = new MenuItem() { Action = "SiteSettings", Caption = "General", Controller = "Admin", DisplayOrder = 0 };
             section.Children.Add(item);
