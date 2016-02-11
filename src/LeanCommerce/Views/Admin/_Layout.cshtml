@@ -41,6 +41,8 @@
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/tinymce/jquery.tinymce.min.js" asp-append-version="true"></script>
+        <script src="~/lib/tinymce/tinymce.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/lib/angular/angular.min.js" asp-append-version="true"></script>
         <script src="~/lib/angular/angular-route.min.js" asp-append-version="true"></script>
@@ -52,6 +54,7 @@
         <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
         <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
         <script src="~/js/MvcGrid/mvc-grid.js" asp-append-version="true"></script>
+        
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -78,6 +81,8 @@
         <script src="~/js/datatables/js/jquery.dataTables.js" asp-append-version="true"></script>
         <script src="~/js/datatables/tools/js/dataTables.tableTools.js" asp-append-version="true"></script>
         <script src="~/js/MvcGrid/mvc-grid.js" asp-append-version="true"></script>
+        <script src="~/lib/tinymce/jquery.tinymce.min.js" asp-append-version="true"></script>
+        <script src="~/lib/tinymce/tinymce.js" asp-append-version="true"></script>
     </environment>
 
 
@@ -403,8 +408,14 @@
         });
     </script>
     <script>
-        NProgress.done();
+          tinymce.init({
+            selector: '.htmleditor'
+          });
     </script>
+
+    tinymce.init({
+    selector: '#mytextarea'
+    });
     <!-- /datepicker -->
     <!-- /footer content -->
 
