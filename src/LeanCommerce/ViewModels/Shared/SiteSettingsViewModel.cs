@@ -22,14 +22,14 @@ namespace LeanCommerce.ViewModels.Shared
                 GooglePlusURL = "#";
             } else
             {
-                PhoneNumber = "+2 95 01 88 821";
+                PhoneNumber = settings.PhoneNumber;
                 SiteName = settings.SiteName;
-                Email = "info@leancommerce.com";
-                FacebookURL = "#";
-                TwitterURL = "#";
-                LinkedInURL = "#";
-                DribbbleURL = "#";
-                GooglePlusURL = "#";
+                Email = settings.Email;
+                FacebookURL = settings.FacebookURL;
+                TwitterURL = settings.TwitterURL;
+                LinkedInURL = settings.LinkedInURL;
+                DribbbleURL = settings.DribbbleURL;
+                GooglePlusURL = settings.GooglePlusURL;
             }
 
         }

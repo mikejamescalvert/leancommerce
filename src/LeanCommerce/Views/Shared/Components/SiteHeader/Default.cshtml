@@ -11,7 +11,7 @@
                         <ul class="nav nav-pills">
                             @if (String.IsNullOrEmpty(Model.PhoneNumber) == false)
                             {
-                                <li><a href="#"><i class="fa fa-phone"></i> @Model.PhoneNumber</a></li>
+                                <li><a href="tel:@Model.PhoneNumber"><i class="fa fa-phone"></i> @Model.PhoneNumber</a></li>
                             }
                             @if (String.IsNullOrEmpty(Model.Email) == false)
                             {

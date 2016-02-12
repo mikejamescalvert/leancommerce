@@ -20,16 +20,20 @@ namespace LeanCommerce.Services.Site.Service
                 return _SiteSettings;
             }
         }
+        private SiteSettings _defaultSiteSettings;
         public SiteSettings DefaultSiteSettings {
             get
             {
                 if (SiteSettings == null)
                     return null;
 
-                return SiteSettings.Find(x=>x.DefaultSite == true).FirstOrDefaultAsync().Result;
+                if (_defaultSiteSettings == null)
+                    _defaultSiteSettings = SiteSettings.Find(x => x.DefaultSite == true).FirstOrDefaultAsync().Result;
+
+                return _defaultSiteSettings;
             }
         }
-
+        private SiteSettings _currentSiteSettings;
         public SiteSettings CurrentSiteSettings
         {
             get
@@ -37,8 +41,10 @@ namespace LeanCommerce.Services.Site.Service
                 if (CurrentSiteId == ObjectId.Empty)
                     return DefaultSiteSettings;
 
+                if (_currentSiteSettings == null || _currentSiteSettings.Id != CurrentSiteId)
+                    _currentSiteSettings = SiteSettings.Find(x => x.Id == CurrentSiteId).FirstOrDefaultAsync().Result;
 
-                return SiteSettings.Find(x => x.Id == CurrentSiteId).FirstOrDefaultAsync().Result;
+                return _currentSiteSettings;
             }
         }
 

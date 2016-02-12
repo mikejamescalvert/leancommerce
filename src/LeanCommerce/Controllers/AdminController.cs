@@ -9,6 +9,7 @@ using LeanCommerce.ViewModels.Admin;
 using LeanCommerce.Services.Catalog.Model;
 using System.Collections;
 using LeanCommerce.Services.Cms.Model;
+using LeanCommerce.Services.Site.Model;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -56,7 +57,7 @@ namespace LeanCommerce.Controllers
         {
             try
             {
-                _siteSettingsService.CurrentSiteSettings.SiteName = model.SiteName;
+                model.CopyToSiteSettings(_siteSettingsService.CurrentSiteSettings);
                 _siteSettingsService.InsertUpdateSite(_siteSettingsService.CurrentSiteSettings);
             }
             catch (Exception ex)
