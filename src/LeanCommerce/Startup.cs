@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using LeanCommerce.Models;
 using LeanCommerce.Services;
 using NonFactors.Mvc.Grid;
+using LeanCommerce.Core.User.Model;
 
 namespace LeanCommerce
 {

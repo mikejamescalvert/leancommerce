@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.AspNet.Routing;
 using AspNet.Identity3.MongoDB;
+using LeanCommerce.Core.User.Model;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

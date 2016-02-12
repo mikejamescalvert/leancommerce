@@ -11,6 +11,7 @@ using LeanCommerce.Models;
 using LeanCommerce.Services;
 using LeanCommerce.ViewModels.Manage;
 using Microsoft.Extensions.OptionsModel;
+using LeanCommerce.Core.User.Model;
 
 namespace LeanCommerce.Controllers
 {

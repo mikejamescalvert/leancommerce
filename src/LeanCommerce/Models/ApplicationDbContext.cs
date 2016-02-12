@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration.Memory;
 using System.Configuration;
 using Microsoft.Extensions.OptionsModel;
 using LeanCommerce.Services.MongoSettings.Service;
+using LeanCommerce.Core.User.Model;
 
 namespace LeanCommerce.Models
 {
